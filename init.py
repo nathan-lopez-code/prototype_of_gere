@@ -51,7 +51,7 @@ def remember_last():
 def nomberOfday(date1, date2=None):
     day_b = None
     if date2 != None:
-        day_b = date1 - date2
+        day_b = date2 - date1
         day_b = day_b.days
     return day_b
 
@@ -78,9 +78,19 @@ def ovi_date(date1, date2=None):
 
     return ovilation_date
 
-def feconded_period(date_ov):
+def feconded_period(date1, date_ov):
     """ in this function we can calculate the fecondation period"""
-    pass
+    i = date_ov - date1
+    on_date = None
+    ii = 0
+    fecond = []
+    for x in range(i, date_ov.day):
+        if on_date != None:
+            on_date = i + timedelta(days=ii)
+            fecond.append(on_date)
+            ii += 1
+
+    return fecond
 
 
 
@@ -103,6 +113,5 @@ if __name__ == "__main__":
         # excute the commande
         date_ov = ovi_date(first_date, second_date)
         print(date_ov)
-
-        #print(feconded_period(date_ov)):
+        print(feconded_period(date_ov))
 
